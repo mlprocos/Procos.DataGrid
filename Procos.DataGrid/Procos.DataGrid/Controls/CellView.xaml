@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Procos.DataGrid.Controls;assembly=Procos.DataGrid"
+             x:Class="Procos.DataGrid.Controls.CellView"
+      
+      x:Name="MarginGrid"
+          Padding="0"
+          BackgroundColor="Teal">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="ExpanderColumn"
+                              Width="Auto" />
+            <ColumnDefinition x:Name="BorderColumn"
+                              Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <controls:Expander Grid.Row="0"
+                           Grid.Column="0" />
+
+        <!--        <Grid x:Name="BorderGrid"-->
+        <!--              Grid.Row="0"-->
+        <!--              Grid.Column="1"-->
+        <!--              BackgroundColor="Aqua"-->
+        <!--              Padding="1">-->
+        <!--            <Grid.ColumnDefinitions>-->
+        <!--                <ColumnDefinition Width="*" />-->
+        <!--            </Grid.ColumnDefinitions>-->
+        <!--            <Grid.RowDefinitions>-->
+        <!--                <RowDefinition Height="{Binding Row.Height}" />-->
+        <!--            </Grid.RowDefinitions>-->
+        <!---->
+        <!--            <Grid x:Name="PaddingGrid"-->
+        <!--                  Grid.Row="0"-->
+        <!--                  Grid.Column="0"-->
+        <!--                  Padding="5"-->
+        <!--                  BackgroundColor="White">-->
+        <!---->
+        <!--                <ContentView x:Name="ChildContentView" />-->
+        <!---->
+        <!--            </Grid>-->
+        <!--        </Grid>-->
+</Grid>

@@ -1,0 +1,12 @@
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.csprojResolveAssemblyReference.cache
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\CellView.xaml.g.cs
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Expander.xaml.g.cs
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\DataGrid.xaml.g.cs
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Procos.DataGrid.dll
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Procos.DataGrid.pdb
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Core.dll
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Xaml.dll
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Core.xml
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Xaml.xml
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.dll
+c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.pdb

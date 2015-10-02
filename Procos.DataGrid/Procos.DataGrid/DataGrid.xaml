@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Procos.DataGrid.Views;assembly=Procos.DataGrid"
+             x:Class="Procos.DataGrid.DataGrid"
+
+             x:Name="DataGridView"
+             PropertyChanging="OnPropertyChanging"
+             PropertyChanged="OnPropertyChanged">
+<Grid>
+    <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+    <AbsoluteLayout x:Name="CompleteLayout"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    IsClippedToBounds="True"
+                    BackgroundColor="Aqua">
+        
+        <views:DataGridLayout x:Name="MainPanel"
+                              IsClippedToBounds="True"
+                              AbsoluteLayout.LayoutFlags="None" 
+                              AbsoluteLayout.LayoutBounds="10,10,250,200"
+                              BackgroundColor="Blue"/>
+        
+        <views:DataGridLayout x:Name="FrozenColumnPanel"
+                              IsClippedToBounds="True"
+                              AbsoluteLayout.LayoutFlags="None" />
+        
+        <views:DataGridLayout x:Name="FrozenRowPanel"
+                              IsClippedToBounds="True"
+                              AbsoluteLayout.LayoutFlags="None" />
+        
+        <views:DataGridLayout x:Name="CornerPanel"
+                              IsClippedToBounds="True"
+                              AbsoluteLayout.LayoutFlags="None" />
+        
+    </AbsoluteLayout>
+
+    </Grid>
+
+</ContentView>
