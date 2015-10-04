@@ -8,37 +8,47 @@
              x:Name="DataGridView"
              PropertyChanging="OnPropertyChanging"
              PropertyChanged="OnPropertyChanged">
-<Grid>
-    <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="*"/>
+    <Grid ColumnSpacing="1"
+          RowSpacing="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-    <AbsoluteLayout x:Name="CompleteLayout"
-                    Grid.Column="1"
-                    Grid.Row="0"
-                    IsClippedToBounds="True"
-                    BackgroundColor="Aqua">
-        
-        <views:DataGridLayout x:Name="MainPanel"
-                              IsClippedToBounds="True"
-                              AbsoluteLayout.LayoutFlags="None" 
-                              AbsoluteLayout.LayoutBounds="10,10,250,200"
-                              BackgroundColor="Blue"/>
-        
-        <views:DataGridLayout x:Name="FrozenColumnPanel"
-                              IsClippedToBounds="True"
-                              AbsoluteLayout.LayoutFlags="None" />
-        
-        <views:DataGridLayout x:Name="FrozenRowPanel"
-                              IsClippedToBounds="True"
-                              AbsoluteLayout.LayoutFlags="None" />
-        
-        <views:DataGridLayout x:Name="CornerPanel"
-                              IsClippedToBounds="True"
-                              AbsoluteLayout.LayoutFlags="None" />
-        
-    </AbsoluteLayout>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <views:DataGridLayout x:Name="MainPanel"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                              IsClippedToBounds="True" />
+
+        <views:DataGridLayout x:Name="ColumnHeaderPanel"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              IsClippedToBounds="True"
+                              BackgroundColor="Gray" />
+
+        <views:DataGridLayout x:Name="RowHeaderPanel"
+                              Grid.Column="0"
+                              Grid.Row="1"
+                              IsClippedToBounds="True"
+                              BackgroundColor="Gray" />
+
+        <views:DataGridLayout x:Name="CornerPanel"
+                              Grid.Column="0"
+                              Grid.Row="0"
+                              IsClippedToBounds="True"
+                              BackgroundColor="White" />
+
+        <Label x:Name="ViewLabel"
+               Grid.Column="1"
+               Grid.Row="0"/>
+
+        <Label x:Name="RowLabel"
+               Grid.Column="0"
+               Grid.Row="1"/>
     </Grid>
 
 </ContentView>

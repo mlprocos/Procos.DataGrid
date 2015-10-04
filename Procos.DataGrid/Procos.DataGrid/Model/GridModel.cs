@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
@@ -15,6 +16,44 @@ namespace Procos.DataGrid
 
     public class GridModel : BindableObject
     {
+        #region Constructor
+
+        public GridModel()
+        {
+            Rows = new ObservableCollection<Row>();
+            Rows.CollectionChanged += RowsOnCollectionChanged;
+        }
+
+        #endregion
+
+        public static GridModel CreateSample()
+        {
+            var gridModel = new GridModel();
+
+            var colNum = 5;
+            var rowNum = 2000;
+
+            for (var i = 0; i < colNum; i++)
+            {
+                gridModel.Columns.Add(new Column());
+            }
+
+            for (var i = 0; i < rowNum; i++)
+            {
+                var row = new Row();
+
+                for (var j = 0; j < colNum; j++)
+                {
+                    var col = gridModel.Columns[j];
+                    row[col] = new Cell(col, row);
+                }
+
+                gridModel.Rows.Add(row);
+            }
+
+            return gridModel;
+        }
+
         #region Properties
 
         #region Columns
@@ -49,16 +88,12 @@ namespace Procos.DataGrid
 
         public static readonly BindableProperty RowsProperty =
             BindableProperty.Create<GridModel, ObservableCollection<Row>>(
-                p => p.Rows, new ObservableCollection<Row>());
+                p => p.Rows, null);
 
         public ObservableCollection<Row> Rows
         {
             get { return (ObservableCollection<Row>) GetValue(RowsProperty); }
-            set
-            {
-                SetValue(RowsProperty, value);
-                Rows.CollectionChanged += RowsOnCollectionChanged;
-            }
+            private set { SetValue(RowsProperty, value); }
         }
 
         private void RowsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyArgs)
@@ -66,12 +101,43 @@ namespace Procos.DataGrid
             switch (notifyArgs.Action)
             {
                 default:
+                    if (InTransformation)
+                    {
+                        TransformationList.Add(()=>OnPropertyChanged(nameof(Rows)));
+                    }
+                    else
+                    {
+                        
+                    }
                     OnPropertyChanged(nameof(Rows));
                     break;
             }
         }
 
         #endregion
+
+
+
+        public bool InTransformation { get; private set; }
+
+        private List<Action> TransformationList { get; } = new List<Action>();  
+
+        public void BeginTransformation() => InTransformation = true;
+
+        public void EndTransformation()
+        {
+            if (InTransformation)
+            {
+                foreach (var action in TransformationList)
+                {
+                    action.Invoke();
+                }
+
+                InTransformation = false;
+                TransformationList.Clear();
+            }
+        }
+
 
         #region SelectionMode
 
@@ -93,76 +159,42 @@ namespace Procos.DataGrid
 
         public List<Column> VisibleColumns
         {
-            get
-            {
-                return Columns.Where(column => column.IsVisible).ToList();
-            }
+            get { return Columns.Where(column => column.IsVisible).ToList(); }
         }
+
+        private List<Row> _visibleRows;
 
         public List<Row> VisibleRows
         {
             get
             {
-                var visibleRows = new List<Row>();
+                if (_visibleRows == null)
+                {
+                    _visibleRows = new List<Row>();
 
-                foreach (var row in Rows)
-                    if (row.IsVisible)
-                    {
-                        visibleRows.Add(row);
+                    foreach (var row in Rows)
+                        if (row.IsVisible)
+                        {
+                            _visibleRows.Add(row);
 
-                        if (row.IsExpanded)
-                            visibleRows.AddRange(row.AllVisibleChildRows);
-                    }
-
-                return visibleRows;
+                            if (row.IsExpanded)
+                                _visibleRows.AddRange(row.AllVisibleChildRows);
+                        }
+                }
+                return _visibleRows;
             }
         }
 
         public double Width
         {
-            get
-            {
-                return VisibleColumns.Sum(visibleColumn => visibleColumn.Width);
-            }
+            get { return VisibleColumns.Sum(visibleColumn => visibleColumn.Width); }
         }
 
         public double Height
         {
-            get
-            {
-                return VisibleRows.Sum(visibleRow => visibleRow.Height);
-            }
+            get { return VisibleRows.Sum(visibleRow => visibleRow.Height); }
         }
 
         #endregion
-
-        public static GridModel CreateSample()
-        {
-            var gridModel = new GridModel();
-
-            int colNum = 5;
-            int rowNum = 10;
-
-            for (int i = 0; i < colNum; i++)
-            {
-                gridModel.Columns.Add(new Column());
-            }
-
-            for (int i = 0; i < rowNum; i++)
-            {
-                var row = new Row();
-
-                for (int j = 0; j < colNum; j++)
-                {
-                    var col = gridModel.Columns[j];
-                    row[col] = new Cell(col, row);
-                }
-
-                gridModel.Rows.Add(row);
-
-            }
-
-            return gridModel;
-        }
     }
 }

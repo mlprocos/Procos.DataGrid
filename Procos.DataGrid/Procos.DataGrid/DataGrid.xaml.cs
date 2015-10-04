@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -154,11 +155,11 @@ namespace Procos.DataGrid
             var viewRange = CellRange.EmptyRange;
             viewRange.GridModel = GridModel;
 
-            var viewRectangle = new Rectangle(ContentOffset, new Size(CompleteLayout.Width, CompleteLayout.Height));
+            var viewRectangle = new Rectangle(ContentOffset, new Size(MainPanel.Width, MainPanel.Height));
 
             foreach (var visibleColumn in GridModel.VisibleColumns)
             {
-                var columnRectangle = new Rectangle(new Point(ColumnOffest(visibleColumn), 0), new Size(visibleColumn.Width, MainPanel.Height));
+                var columnRectangle = new Rectangle(new Point(ColumnOffest(visibleColumn), 0), new Size(visibleColumn.Width, Double.MaxValue));
 
                 if (viewRectangle.IntersectsWith(columnRectangle))
                 {
@@ -171,7 +172,7 @@ namespace Procos.DataGrid
 
             foreach (var visibleRow in GridModel.VisibleRows)
             {
-                var rowRectangle = new Rectangle(new Point(RowOffest(visibleRow), 0), new Size(visibleRow.Height, MainPanel.Width));
+                var rowRectangle = new Rectangle(new Point(0, RowOffest(visibleRow)), new Size(Double.MaxValue, visibleRow.Height));
 
                 if (viewRectangle.IntersectsWith(rowRectangle))
                 {
@@ -184,6 +185,16 @@ namespace Procos.DataGrid
 
             var visibleCells = viewRange.VisibleCells;
 
+            foreach (var cell in cellViewDictionary.Keys.ToArray())
+            {
+                if (!visibleCells.Contains(cell))
+                {
+                    MainPanel.Children.Remove(cellViewDictionary[cell]);
+                    freeViews.Push(cellViewDictionary[cell]);
+                    cellViewDictionary.Remove(cell);
+                }
+            }
+
             foreach (var visibleCell in visibleCells)
             {
                 if (!cellViewDictionary.ContainsKey(visibleCell))
@@ -192,7 +203,7 @@ namespace Procos.DataGrid
 
                     cellViewDictionary[visibleCell].BindingContext = visibleCell;
 
-                    CompleteLayout.Children.Add(cellViewDictionary[visibleCell]);
+                    MainPanel.Children.Add(cellViewDictionary[visibleCell]);
                 }
 
                 var posRectangle = new Rectangle(CellOffset(visibleCell), visibleCell.Size);
@@ -201,23 +212,17 @@ namespace Procos.DataGrid
                 cellViewDictionary[visibleCell].Layout(posRectangle);
             }
 
-
-            foreach (var cell in cellViewDictionary.Keys.ToArray())
-            {
-                if (!visibleCells.Contains(cell))
-                {
-                    CompleteLayout.Children.Remove(cellViewDictionary[cell]);
-                    freeViews.Push(cellViewDictionary[cell]);
-                    cellViewDictionary.Remove(cell);
-                }
-            }
-
+            ViewLabel.Text = "Used Views: " + cellViewDictionary.Count + "  Free View: " + freeViews.Count + " :: max " + freeViewsMax;
         }
 
+        private int freeViewsMax = 0;
 
         private Stack<View> freeViews = new Stack<View>(); 
         private View GetFreeView()
         {
+            freeViewsMax = Math.Max(freeViewsMax, freeViews.Count);
+            ViewLabel.Text = "Used Views: " + cellViewDictionary.Count + "  Free View: " + freeViews.Count + " :: max " + freeViewsMax;
+
             if (freeViews.Count > 0)
                 return freeViews.Pop();
 

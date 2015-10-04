@@ -10,3 +10,15 @@ c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGri
 c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Xaml.xml
 c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.dll
 c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.pdb
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Procos.DataGrid.dll
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Procos.DataGrid.pdb
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Core.dll
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Xaml.dll
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Core.xml
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Xaml.xml
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.csprojResolveAssemblyReference.cache
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\CellView.xaml.g.cs
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Expander.xaml.g.cs
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\DataGrid.xaml.g.cs
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.dll
+C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.pdb

@@ -16,23 +16,26 @@ namespace Procos.DataGrid {
     
     public partial class DataGrid : ContentView {
         
-        private AbsoluteLayout CompleteLayout;
-        
         private global::Procos.DataGrid.Views.DataGridLayout MainPanel;
         
-        private global::Procos.DataGrid.Views.DataGridLayout FrozenColumnPanel;
+        private global::Procos.DataGrid.Views.DataGridLayout ColumnHeaderPanel;
         
-        private global::Procos.DataGrid.Views.DataGridLayout FrozenRowPanel;
+        private global::Procos.DataGrid.Views.DataGridLayout RowHeaderPanel;
         
         private global::Procos.DataGrid.Views.DataGridLayout CornerPanel;
         
+        private Label ViewLabel;
+        
+        private Label RowLabel;
+        
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(DataGrid));
-            CompleteLayout = this.FindByName<AbsoluteLayout>("CompleteLayout");
             MainPanel = this.FindByName<global::Procos.DataGrid.Views.DataGridLayout>("MainPanel");
-            FrozenColumnPanel = this.FindByName<global::Procos.DataGrid.Views.DataGridLayout>("FrozenColumnPanel");
-            FrozenRowPanel = this.FindByName<global::Procos.DataGrid.Views.DataGridLayout>("FrozenRowPanel");
+            ColumnHeaderPanel = this.FindByName<global::Procos.DataGrid.Views.DataGridLayout>("ColumnHeaderPanel");
+            RowHeaderPanel = this.FindByName<global::Procos.DataGrid.Views.DataGridLayout>("RowHeaderPanel");
             CornerPanel = this.FindByName<global::Procos.DataGrid.Views.DataGridLayout>("CornerPanel");
+            ViewLabel = this.FindByName<Label>("ViewLabel");
+            RowLabel = this.FindByName<Label>("RowLabel");
         }
     }
 }

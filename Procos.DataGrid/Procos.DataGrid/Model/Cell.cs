@@ -80,7 +80,10 @@ namespace Procos.DataGrid
 
     public class CellRange : INotifyPropertyChanged
     {
-        public static CellRange EmptyRange = new CellRange(null, null, null);
+        public static CellRange EmptyRange
+        {
+            get { return new CellRange(null, null, null); }
+        }
 
         public GridModel GridModel { get; set; }
 
