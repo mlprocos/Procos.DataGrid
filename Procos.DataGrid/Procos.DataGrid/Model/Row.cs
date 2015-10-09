@@ -5,34 +5,37 @@ using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Procos.DataGrid
+namespace Procos.DataGrid.Model
 {
     public class Row : BindableObject
     {
+        #region Commands
+
         public ICommand ExpandCommand
         {
-            get
-            {
-                return new Command(() => IsExpanded = !IsExpanded);
-            }
+            get { return new Command(() => IsExpanded = !IsExpanded); }
         }
 
-        #region ActualHeight
+        #endregion
 
-        public static readonly BindableProperty ActualHeightProperty =
+        #region Properties
+
+        #region HeightRequest
+
+        public static readonly BindableProperty HeightRequestProperty =
             BindableProperty.Create<Row, double>(
-                p => p.ActualHeight, 80, BindingMode.Default, ValidateActualHeight);
+                p => p.HeightRequest, 80, BindingMode.Default, ValidateHeightRequest);
 
-        private static bool ValidateActualHeight(BindableObject bindable, double value)
+        private static bool ValidateHeightRequest(BindableObject bindable, double value)
         {
             // TODO are this all invalid values?
             return value >= 0;
         }
 
-        public double ActualHeight
+        public double HeightRequest
         {
-            get { return (double) GetValue(ActualHeightProperty); }
-            set { SetValue(ActualHeightProperty, value); }
+            get { return (double) GetValue(HeightRequestProperty); }
+            set { SetValue(HeightRequestProperty, value); }
         }
 
         #endregion
@@ -128,6 +131,42 @@ namespace Procos.DataGrid
 
         #endregion
 
+        #region GridModel
+        
+        public static readonly BindableProperty GridModelProperty =
+            BindableProperty.Create<Row, GridModel>(
+                p => p.GridModel, null, BindingMode.Default, null, GridModelChanged);
+
+        private static void GridModelChanged(BindableObject bindable, GridModel oldValue, GridModel newValue)
+        {
+            var row = bindable as Row;
+
+            oldValue?.Unregister(row);
+            newValue.Register(row);
+        }
+        
+        public GridModel GridModel
+    {
+            get { return (GridModel)GetValue(GridModelProperty); }
+            set { SetValue(GridModelProperty, value); }
+        }
+
+        #endregion
+
+
+        public double Offset { get; set; } = 0;
+
+        #endregion
+
+        #region Constructor
+
+        public Row(GridModel girdModel)
+        {
+            GridModel = girdModel;
+        }
+
+        #endregion
+
         private readonly Dictionary<Column, Cell> _cellDictionary = new Dictionary<Column, Cell>();
 
         public Cell this[Column col]
@@ -136,6 +175,7 @@ namespace Procos.DataGrid
             set { _cellDictionary[col] = value; }
         }
 
+        public Cell this[int colNum] => this[_cellDictionary.Keys.ElementAt(colNum)];
 
         public List<Row> AllVisibleChildRows
         {
@@ -155,5 +195,7 @@ namespace Procos.DataGrid
                 return allVisibleChildRows;
             }
         }
+
+        public int Tag { get; set; }
     }
 }

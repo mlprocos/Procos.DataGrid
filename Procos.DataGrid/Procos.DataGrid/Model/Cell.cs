@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Procos.DataGrid.Annotations;
 using Xamarin.Forms;
 
-namespace Procos.DataGrid
+namespace Procos.DataGrid.Model
 {
     public class Cell : BindableObject
     {
@@ -54,13 +54,14 @@ namespace Procos.DataGrid
         public bool FirstVisibleColumn => true;
 
 
-        public Cell(Column col, Row row)
+        public Cell(Column col, Row row, string data)
         {
             Column = col;
             Row = row;
-
-            Color = GetRandomColor();
+            Data = data;
         }
+
+        public string Data { get; set; }
 
         public Color Color { get; set; }
 
@@ -69,12 +70,9 @@ namespace Procos.DataGrid
             get { return new Size(Column.Width, Row.Height); }
         }
 
-
-        private static readonly Random random = new Random();
-
-        private Color GetRandomColor()
+        public Point Offset
         {
-            return Color.FromRgba(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
+            get { return new Point(Column.Offset, Row.Offset); }
         }
     }
 
@@ -87,10 +85,36 @@ namespace Procos.DataGrid
 
         public GridModel GridModel { get; set; }
 
+        
         public Column Left { get; set; }
         public Column Right { get; set; }
         public Row Top { get; set; }
         public Row Bottom { get; set; }
+
+
+        #region Width
+
+        public double Width
+        {
+            get
+            {
+                return IsValid ? VisibleColumns.Sum(visibleColumn => visibleColumn.Width) : 0; 
+            }
+        }
+
+        #endregion
+
+        #region Height
+        public double Height
+        {
+            get
+            {
+                return IsValid ? VisibleRows.Sum(visibleRow => visibleRow.Height) : 0; 
+                
+            }
+        }
+
+        #endregion
 
         public bool IsValid
             => GridModel != null
@@ -104,7 +128,7 @@ namespace Procos.DataGrid
 
         public CellRange(GridModel gridModel, Column leftCol, Row topRow, Column rightCol, Row bottomRow)
         {
-            if (GridModel != null)
+            if (gridModel != null)
             {
                 GridModel = gridModel;
 
@@ -126,6 +150,21 @@ namespace Procos.DataGrid
         {
         }
 
+        public List<Column> VisibleColumns
+        {
+            get
+            {
+                return PartialList(GridModel.VisibleColumns, Left, Right);
+            }
+        }
+
+        public List<Row> VisibleRows
+        {
+            get
+            {
+                return PartialList(GridModel.VisibleRows, Top, Bottom);
+            }
+        }
 
         public List<Cell> VisibleCells
         {
@@ -133,22 +172,31 @@ namespace Procos.DataGrid
             {
                 var cellList = new List<Cell>();
 
-                int left = GridModel.VisibleColumns.IndexOf(Left);
-                int right = GridModel.VisibleColumns.IndexOf(Right);
-
-                int top = GridModel.VisibleRows.IndexOf(Top);
-                int bottom = GridModel.VisibleRows.IndexOf(Bottom);
-
-                for (int j = top; j <= bottom; j++)
-                {
-                    for (int i = left; i <= right; i++)
-                    {
-                        cellList.Add(GridModel.Rows[j][GridModel.VisibleColumns[i]]);
-                    }
-                }
+                foreach (var row in VisibleRows)
+                    foreach (var col in VisibleColumns)
+                        cellList.Add(row[col]);
 
                 return cellList;
             }
+        }
+
+        private List<T> PartialList<T>(LinkedList<T> list, T start, T end)
+        {
+            List<T> returnList = new List<T>();
+
+            var listNode = list.Find(start);
+
+            if (listNode != null)
+            {
+                do
+                {
+                    returnList.Add(listNode.Value);
+                    listNode = listNode.Next;
+                } while (listNode != null
+                         && !Equals(listNode.Previous.Value, end));
+            }
+
+            return returnList;
         }
 
         #region INotifyPropertyChanged

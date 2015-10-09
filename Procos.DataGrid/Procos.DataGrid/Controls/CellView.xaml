@@ -18,26 +18,26 @@
         <controls:Expander Grid.Row="0"
                            Grid.Column="0" />
 
-        <!--        <Grid x:Name="BorderGrid"-->
-        <!--              Grid.Row="0"-->
-        <!--              Grid.Column="1"-->
-        <!--              BackgroundColor="Aqua"-->
-        <!--              Padding="1">-->
-        <!--            <Grid.ColumnDefinitions>-->
-        <!--                <ColumnDefinition Width="*" />-->
-        <!--            </Grid.ColumnDefinitions>-->
-        <!--            <Grid.RowDefinitions>-->
-        <!--                <RowDefinition Height="{Binding Row.Height}" />-->
-        <!--            </Grid.RowDefinitions>-->
-        <!---->
-        <!--            <Grid x:Name="PaddingGrid"-->
-        <!--                  Grid.Row="0"-->
-        <!--                  Grid.Column="0"-->
-        <!--                  Padding="5"-->
-        <!--                  BackgroundColor="White">-->
-        <!---->
-        <!--                <ContentView x:Name="ChildContentView" />-->
-        <!---->
-        <!--            </Grid>-->
-        <!--        </Grid>-->
+                <Grid x:Name="BorderGrid"
+                      Grid.Row="0"
+                      Grid.Column="1"
+                      BackgroundColor="{Binding BorderColor}"
+                      Padding="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{Binding Row.Height}" />
+                    </Grid.RowDefinitions>
+        
+                    <Grid x:Name="PaddingGrid"
+                          Grid.Row="0"
+                          Grid.Column="0"
+                          Padding="5"
+                          BackgroundColor="White">
+        
+                        <ContentView x:Name="ChildContentView" />
+        
+                    </Grid>
+                </Grid>
 </Grid>

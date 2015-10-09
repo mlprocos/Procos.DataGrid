@@ -1,15 +1,3 @@
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.csprojResolveAssemblyReference.cache
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\CellView.xaml.g.cs
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Expander.xaml.g.cs
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\DataGrid.xaml.g.cs
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Procos.DataGrid.dll
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Procos.DataGrid.pdb
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Core.dll
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Xaml.dll
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Core.xml
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Xaml.xml
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.dll
-c:\users\matthias.luettgens\documents\visual studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.pdb
 C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Procos.DataGrid.dll
 C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Procos.DataGrid.pdb
 C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Core.dll
@@ -22,3 +10,21 @@ C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\
 C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\DataGrid.xaml.g.cs
 C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.dll
 C:\Users\matth\Source\Repos\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.pdb
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Procos.DataGrid.dll
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Procos.DataGrid.pdb
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\System.Threading.Tasks.Parallel.dll
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Core.dll
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Platform.dll
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Xaml.dll
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\System.Collections.Concurrent.dll
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\System.Threading.Tasks.Parallel.xml
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Core.xml
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\Xamarin.Forms.Xaml.xml
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\bin\Debug\System.Collections.Concurrent.xml
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.Controls.CellView.xaml.g.cs
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.Controls.Expander.xaml.g.cs
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.DataGrid.xaml.g.cs
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.TestPage.xaml.g.cs
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.dll
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.pdb
+C:\Users\matthias.luettgens\Documents\Visual Studio 2015\Projects\Procos.DataGrid\Procos.DataGrid\Procos.DataGrid\obj\Debug\Procos.DataGrid.csprojResolveAssemblyReference.cache

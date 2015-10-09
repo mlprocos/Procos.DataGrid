@@ -11,44 +11,63 @@
     <Grid ColumnSpacing="1"
           RowSpacing="1">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <views:DataGridLayout x:Name="MainPanel"
-                              Grid.Column="1"
-                              Grid.Row="1"
-                              IsClippedToBounds="True" />
+        <views:DataGridPanel x:Name="MainPanel"
+                             Grid.Column="1"
+                             Grid.Row="1"
+                             GridModel="{Binding GridModel}"
+                             GridRange="{Binding GridModel.MainPanel}"
+                             GridOffset="{Binding GridOffset}"
+                             ShowScrollPosition="True"/>
 
-        <views:DataGridLayout x:Name="ColumnHeaderPanel"
-                              Grid.Column="1"
-                              Grid.Row="0"
-                              IsClippedToBounds="True"
-                              BackgroundColor="Gray" />
+        <views:DataGridPanel x:Name="ColumnHeaderPanel"
+                             Grid.Column="1"
+                             Grid.Row="0"
+                             BackgroundColor="Gray"
+                             GridModel="{Binding GridModel}"
+                             GridRange="{Binding GridModel.HeaderPanel}"
+                             GridOffset="{Binding GridOffset}"
+                             HeightRequest="{Binding GridModel.HeaderPanel.Height}" />
 
-        <views:DataGridLayout x:Name="RowHeaderPanel"
-                              Grid.Column="0"
-                              Grid.Row="1"
-                              IsClippedToBounds="True"
-                              BackgroundColor="Gray" />
 
-        <views:DataGridLayout x:Name="CornerPanel"
-                              Grid.Column="0"
-                              Grid.Row="0"
-                              IsClippedToBounds="True"
-                              BackgroundColor="White" />
+        <views:DataGridPanel x:Name="RowHeaderPanel"
+                             Grid.Column="0"
+                             Grid.Row="1"
+                             BackgroundColor="Gray"
+                             GridModel="{Binding GridModel}"
+                             GridRange="{Binding GridModel.FixedColumnsPanel}"
+                             GridOffset="{Binding GridOffset}"
+                             WidthRequest="{Binding GridModel.FixedColumnsPanel.Width}" />
 
-        <Label x:Name="ViewLabel"
-               Grid.Column="1"
-               Grid.Row="0"/>
+        <views:DataGridPanel x:Name="CornerPanel"
+                             Grid.Column="0"
+                             Grid.Row="0"
+                             BackgroundColor="White"
+                             GridModel="{Binding GridModel}"
+                             GridRange="{Binding GridModel.CornerPanel}"
+                             GridOffset="{Binding GridOffset}"
+                             WidthRequest="{Binding GridModel.CornerPanel.Width}"
+                             HeightRequest="{Binding GridModel.CornerPanel.Height}" />
 
-        <Label x:Name="RowLabel"
-               Grid.Column="0"
-               Grid.Row="1"/>
+        <!--        <Label x:Name="CalcLabel"-->
+        <!--               Grid.Column="0"-->
+        <!--               Grid.Row="0" />-->
+        <!---->
+        <!--        <Label x:Name="ViewLabel"-->
+        <!--               Grid.Column="1"-->
+        <!--               Grid.Row="0" />-->
+        <!---->
+        <!--        <Label x:Name="RowLabel"-->
+        <!--               Grid.Column="0"-->
+        <!--               Grid.Row="1" />-->
+
     </Grid>
 
 </ContentView>

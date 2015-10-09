@@ -12,7 +12,7 @@ namespace Procos.DataGrid.Droid
 {
     public class DataGridRenderer : VisualElementRenderer<DataGrid>
     {
-        private int _mTouchSlop;
+        private readonly int _mTouchSlop;
         bool mIsBeingDragged;
         private Point _mLastMotion;
         private Point _mFirstMotion;
@@ -32,11 +32,9 @@ namespace Procos.DataGrid.Droid
 
         public override bool OnInterceptTouchEvent(MotionEvent e)
         {
-            //Android.Util.Log.Debug("OnInterceptTouchEvent", "OnInterceptTouchEvent " + e.ToString());
-
             if ((e.Action == MotionEventActions.Move) && (mIsBeingDragged))
                 return true;
-
+            
             switch (e.Action & MotionEventActions.Mask)
             {
                 case MotionEventActions.Move:
@@ -58,7 +56,7 @@ namespace Procos.DataGrid.Droid
                 {
                     _mLastMotion = _mFirstMotion = new Point(e.GetX(), e.GetY());
                         
-                        _mBegan = Element.ContentOffset;
+                        _mBegan = Element.GridOffset;
 
                         break;
                     }
@@ -79,8 +77,6 @@ namespace Procos.DataGrid.Droid
 
         public override bool OnTouchEvent(MotionEvent e)
         {
-            //Android.Util.Log.Debug("OnTouchEvent", "OnTouchEvent " + e.ToString());
-
             switch (e.Action & MotionEventActions.Mask)
             {
                 case MotionEventActions.Down:
@@ -89,7 +85,7 @@ namespace Procos.DataGrid.Droid
                         _mLastMotion.Y = e.GetY();
                         _mLastMotion.X = e.GetX();
 
-                        _mBegan = Element.ContentOffset;
+                        _mBegan = Element.GridOffset;
 
                         break;
                     }
@@ -113,14 +109,10 @@ namespace Procos.DataGrid.Droid
 
                         double newx = _mBegan.X - tr_x;
                         double newy = _mBegan.Y - tr_y;
-
-                        //Android.Util.Log.Debug("ActualScroll", "deltaX " + deltaX + " deltaY " + deltaY + " newx " + newx + " newy " + newy);
-                        //Android.Util.Log.Debug("ActualScroll", "began_x " + _began_x + " tr_x " + tr_x +" began_y " + _began_y + " tr_y " + tr_y);
-                        //Android.Util.Log.Debug("ActualScroll", "mLastMotionX " + mLastMotionX + " x " + x + " mLastMotionY " + mLastMotionY + " y " + y);
-
+                        
                         _mLastMotion = new Point(x, y);
 
-                        Element.ContentOffset = new Point(newx, newy);
+                        Element.GridOffset = new Point(newx, newy);
                     }
                     break;
                 case MotionEventActions.Up:

@@ -1,17 +1,19 @@
 ﻿using System.Diagnostics;
 using Xamarin.Forms;
 
-namespace Procos.DataGrid
+namespace Procos.DataGrid.Model
 {
     public class Column : BindableObject
     {
-        #region ActualWidth
+        #region Properties
 
-        public static readonly BindableProperty ActualWidthProperty =
+        #region WidthRequest
+
+        public static readonly BindableProperty WidthRequestProperty =
             BindableProperty.Create<Column, double>(
-                p => p.ActualWidth, 120, BindingMode.Default, ValidateActualWidth);
+                p => p.WidthRequest, 120, BindingMode.Default, ValidateWidthRequest);
 
-        private static bool ValidateActualWidth(BindableObject bindable, double value)
+        private static bool ValidateWidthRequest(BindableObject bindable, double value)
         {
             var col = bindable as Column;
             Debug.Assert(col != null, "col != null");
@@ -20,10 +22,10 @@ namespace Procos.DataGrid
             return value >= 0 && value <= col.MaxWidth;
         }
 
-        public double ActualWidth
+        public double WidthRequest
         {
-            get { return (double)GetValue(ActualWidthProperty); }
-            set { SetValue(ActualWidthProperty, value); }
+            get { return (double)GetValue(WidthRequestProperty); }
+            set { SetValue(WidthRequestProperty, value); }
         }
 
         #endregion
@@ -112,5 +114,43 @@ namespace Procos.DataGrid
         }
 
         #endregion
+
+        #region GridModel
+
+        public static readonly BindableProperty GridModelProperty =
+            BindableProperty.Create<Row, GridModel>(
+                p => p.GridModel, null, BindingMode.Default, null, GridModelChanged);
+
+        private static void GridModelChanged(BindableObject bindable, GridModel oldValue, GridModel newValue)
+        {
+            var col = bindable as Column;
+
+            oldValue?.Unregister(col);
+            newValue.Register(col);
+        }
+
+        public GridModel GridModel
+        {
+            get { return (GridModel)GetValue(GridModelProperty); }
+            set { SetValue(GridModelProperty, value); }
+        }
+
+        #endregion
+
+
+        public double Offset { get; set; } = 0;
+
+        #endregion
+
+        #region Constructor
+
+        public Column(GridModel gridModel)
+        {
+            GridModel = gridModel;
+        }
+
+        #endregion
+
+        public int Tag { get; set; }
     }
 }
